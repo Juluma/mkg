@@ -1,0 +1,2 @@
+# mkg
+Morsiuskimppugeneraattori
