@@ -77,7 +77,7 @@ jQuery(document).ready(function($){
 
         // Position img by wrapping (relative) div
         bouquetImg.css('top', divHt / 3.9);
-        bouquetImg.css('left', divWth / 2 + fix);
+        bouquetImg.css('left', divWth / 2.00 + fix);
     });
 
     $('#arrow-right img').click(function(){
@@ -90,7 +90,7 @@ jQuery(document).ready(function($){
             link = $('#selection-bar').find('a[rel="'+images[0]+'"]');
         }
 
-        setVisibilities(link, next, 'right');
+        setSelectionVisibilities(link, next, 'right');
         link.click();
     });
 
@@ -101,15 +101,15 @@ jQuery(document).ready(function($){
         if (previous in images) {
             link = $('#selection-bar').find('a[rel="'+images[previous]+'"]');
         } else {
-            link = ('#selection-bar').find('a[rel="'+images[images.length-1]+'"]');
+            link = $('#selection-bar').find('a[rel="'+images[images.length-1]+'"]');
         }
-        setVisibilities(link, previous, 'left');
+        setSelectionVisibilities(link, previous, 'left');
         link.click();
     });
 
     // Check if parent div is hidden and show that and correct ones
     // based on viewport width (and hiding others)
-    setVisibilities = function(link, img, direction) {
+    setSelectionVisibilities = function(link, img, direction) {
         if (link.closest('div').is(':visible')) {
             return;
         }
@@ -120,9 +120,32 @@ jQuery(document).ready(function($){
         var divCount = 3;
         if (wpbs == 'sm') divCount = 4;
         if (wpbs == 'md') divCount = 6;
+        var imgKeys = [];
+        if (direction == 'right') {
+            for (i = img; i <= img + divCount - 1; i++) {
+                if (i in images) {
+                    imgKeys.push(i);
+                } else {
+                    if (typeof j == 'undefined') var j = 0;
+                    else j++;
+                    imgKeys.push(j);
+                }
+            }
+        } else {
+            for (i = img; i >= img - divCount + 1; i--) {
+                if (i in images) {
+                    imgKeys.push(i);
+                } else {
+                    if (typeof j == 'undefined') var j = images.length - 1;
+                    else j--;
+                    imgKeys.push(j);
+                }
+            }
+        }
 
-
-        console.log(img, direction);
+        $.each(imgKeys, function(i, key){
+            $('#selection-bar').find("a[rel='"+images[key]+"']").parent('div').show('slow');
+        });
     }
 
     getArrayKeyByValue = function(value) {

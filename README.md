@@ -9,5 +9,6 @@ Morsiuskimppugeneraattori
 6.1.  1.00<br/>
 7.1.  1.25<br/>
 8.1.  0.75<br/>
-TOTAL 6.5
+9.1.  0.50
+TOTAL 7.00H
 </pre>
