@@ -6,8 +6,8 @@ jQuery(document).ready(function($){
         postfix : '-columns.png'
     };
     var overImg = {
-        prefix  : 'img/bouquets/popup/',
-        postfix : '-pop-up@2x~ipad.png'
+        prefix  : 'img/bouquets/over/',
+        postfix : '-choice@2x~ipad.png'
     };
     var images = [];
     var current = null;
@@ -55,8 +55,9 @@ jQuery(document).ready(function($){
         var divWth      = $('#lady').width();
         var divHt       = $('#lady').height();
         var ladyHt      = $('#lady').find('img:first').height();
+        var ladyWth     = $('#lady').find('img:first').height();
         var ladyOrigHt  = $('#lady').find('img:first').prop('naturalHeight');
-        var ratio       = ladyHt / ladyOrigHt * 2.5;
+        var ratio       = ladyHt / ladyOrigHt;
         current = imgBase;
 
         $('#selection-bar').find('div').removeClass('active');
@@ -64,8 +65,16 @@ jQuery(document).ready(function($){
 
         // Add bouquet
         $(this).closest('div').addClass('active');
-        var img = selImg.prefix + imgBase + selImg.postfix;
-        $('#lady').append('<img src="'+img+'" class="over-image">');
+        var img = overImg.prefix + imgBase + overImg.postfix;
+        $('#lady').append('<img src="'+img+'" class="over-image" style="display:none;">');
+        var bouquetOver = $('#lady').find('.over-image');
+        bouquetOver
+            .css('height', ladyHt)
+            .css('width', 'auto')
+            .css('top', '0')
+            .css('left', (divWth - ladyWth / 2) / 2);
+        bouquetOver.show();
+        /*
         var bouquetImg = $('#lady').find('img:last');
         bouquetImg.height($('#lady').find('img:last').prop('naturalHeight') * ratio);
 
@@ -78,6 +87,7 @@ jQuery(document).ready(function($){
         // Position img by wrapping (relative) div
         bouquetImg.css('top', divHt / 3.9);
         bouquetImg.css('left', divWth / 2.00 + fix);
+        */
     });
 
     $('#arrow-right img').click(function(){
@@ -144,7 +154,7 @@ jQuery(document).ready(function($){
         }
 
         $.each(imgKeys, function(i, key){
-            $('#selection-bar').find("a[rel='"+images[key]+"']").parent('div').show('slow');
+            $('#selection-bar').find("a[rel='"+images[key]+"']").parent('div').show();
         });
     }
 
