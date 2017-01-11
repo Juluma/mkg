@@ -17,15 +17,23 @@ body, html, .wrapper {
 #lady img:first-child {
     max-width: 100%;
     max-height: 100%;
+    padding-top: 5%;
+}
+#lady a img {
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 10%;
 }
 #lady img:last-child {
     position: absolute;
+    padding-top: 5%;
 }
 #arrow-left, #arrow-right {
     height: 100%;
     position: relative;
 }
-#arrow-left img {
+#arrow-left img:first-child {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -44,5 +52,5 @@ body, html, .wrapper {
     cursor: pointer;
 }
 #selection-bar div.active {
-    background: #dbdbdb;
+    border-bottom: 3px solid #dbdbdb;
 }

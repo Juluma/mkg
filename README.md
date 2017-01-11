@@ -11,5 +11,6 @@ Morsiuskimppugeneraattori
 8.1.  0.75
 9.1.  0.50
 10.1. 0.50
-TOTAL 7.50H
+11.1. 0.50
+TOTAL 8.00H
 </pre>

@@ -32,7 +32,7 @@ jQuery(document).ready(function($){
                 xStyle = ' style="display:none"';
             }
             barHtml+= '<div class="col-xs-4 col-sm-3 col-md-2"'+xStyle+'><a href="#" rel="'+imgBase+'" class="bouquetPopup">';
-            barHtml+= '<img src="'+selImg.prefix+imgBase+selImg.postfix+'" class="img-responsive">';
+            barHtml+= '<img src="'+selImg.prefix+imgBase+selImg.postfix+'">';
             barHtml+= '</a></div>';
         });
 
@@ -171,6 +171,10 @@ jQuery(document).ready(function($){
 
     $(window).resize(function(){
         location.reload();
+    });
+
+    $('#link').click(function(){
+        window.location('http://www.ekukka.fi');
     });
 
 });
